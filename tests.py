@@ -1,3 +1,6 @@
+"""
+Unit test the app. It can be run by 'make test' command
+"""
 import unittest
 import urllib
 from main import app

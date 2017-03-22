@@ -26,6 +26,9 @@ def get_valid_commands(queue, file_data=None, fi=None):
 
     #ConfigeParser removes duplicates. As code challenge mentioned, 
     #we can assume we do not need to store output of the same command.
+    # TODO: Following solution will be good enough with small command list, but may not be faster for large list
+    #       #1 possibly build trie tree for both COMMAND_LIST and VALID_LIST to searching. 
+    #       #2 investigate if Ternary Search Tree better option https://pypi.python.org/pypi/pytst/
     cmd_list = cp.options("COMMAND LIST") 
     valid_cmds = cp.options("VALID COMMANDS")
     for cmd in cmd_list:
@@ -43,7 +46,7 @@ def process_command_output(queue):
         #For longer running commands 
         while proc.poll() is None:
             exec_time = time.time() - start_time
-            if exec_time > 5:
+            if exec_time > 60:
                 #kill the command execution
                 os.killpg(os.getpgid(proc.pid), signal.SIGKILL)
                 longer_exec_command = True
