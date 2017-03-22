@@ -1,0 +1,14 @@
+[COMMAND LIST]
+echo "hello there"
+grep "ls" commands.txt
+echo ":(){ :|: & };:" > /tmp/mymaliciousFile; chmod 777 /tmp/mymaliciousFile; ./tmp/mymaliciousFile
+
+[VALID COMMANDS]
+ls
+echo "hello there"
+pwd
+grep "pwd" commands.txt
+grep "ls" commands.txt
+while true; do echo 'Ctrl c to kill'; sleep 1; done
+cat
+ps
